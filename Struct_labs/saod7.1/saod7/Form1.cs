@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,65 @@ namespace saod7
                 f_m = f;
                 ls = new bool[n, n];
                 ReloadFlags();
+            }
+            public void Open()
+            {
+                Remove();
+                StreamReader fl = new StreamReader("sf.txt");
+                string[] s = fl.ReadLine().Split();
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (s[i] != "")
+                        AllList.Add(Convert.ToInt32(s[i]));
+                }
+                s = fl.ReadLine().Split();
+                int t = 0;
+                for (int i = 0; i < AllList.Count; i++)
+                {
+                    for (int j = 0; j < AllList.Count; j++)
+                    {
+                        if (s[t] != "")
+                        {
+                            ls[i, j] = Convert.ToBoolean(s[t]);
+                        }
+                        t++;
+                    }
+                }
+                fl.Close();
+            }
+            public void Save()
+            {
+                FileStream f1 =  File.Create("sf.txt");
+                f1.Close();
+                StreamWriter fl = new StreamWriter("sf.txt");
+                for (int i = 0; i < AllList.Count; i++)
+                {
+                    fl.Write(AllList[i] + " ");
+                }
+                fl.WriteLine();
+                for (int i = 0; i < AllList.Count; i++)
+                {
+                    for (int j = 0; j < AllList.Count; j++)
+                    {
+                        fl.Write(ls[i, j] + " ");
+                    }
+                }
+                fl.Close();
+            }
+            public void Remove()
+            {
+                int temp_length = AllList.Count;
+                while(AllList.Count!=0)//for(int i = temp_length; i >= 0; i--)
+                {
+                    AllList.RemoveAt(0);
+                }
+                for (int i = 0; i < temp_length; i++)
+                {
+                    for (int j = 0; j < temp_length; j++)
+                    {
+                        ls[i, j] = false;
+                    }
+                }
             }
             public void ReloadFlags()
             {
@@ -205,6 +265,21 @@ namespace saod7
 
         private void button3_Click(object sender, EventArgs e)
         {
+        }
+
+        private void NewBut_Click(object sender, EventArgs e)
+        {
+            MyTable.Remove();
+        }
+
+        private void OpenBut_Click(object sender, EventArgs e)
+        {
+            MyTable.Open();
+        }
+
+        private void SaveBut_Click(object sender, EventArgs e)
+        {
+            MyTable.Save();
         }
     }
 }
