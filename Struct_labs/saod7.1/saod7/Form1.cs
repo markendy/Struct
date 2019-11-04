@@ -36,52 +36,66 @@ namespace saod7
             }
             public void Open()
             {
-                Remove();
-                StreamReader fl = new StreamReader("sf.txt");
-                string[] s = fl.ReadLine().Split();
-                for (int i = 0; i < s.Length; i++)
+                try
                 {
-                    if (s[i] != "")
-                        AllList.Add(Convert.ToInt32(s[i]));
-                }
-                s = fl.ReadLine().Split();
-                int t = 0;
-                for (int i = 0; i < AllList.Count; i++)
-                {
-                    for (int j = 0; j < AllList.Count; j++)
+                    Remove();
+                    StreamReader fl = new StreamReader("sf.txt");
+                    string[] s = fl.ReadLine().Split();
+                    for (int i = 0; i < s.Length; i++)
                     {
-                        if (s[t] != "")
-                        {
-                            ls[i, j] = Convert.ToBoolean(s[t]);
-                        }
-                        t++;
+                        if (s[i] != "")
+                            AllList.Add(Convert.ToInt32(s[i]));
                     }
+                    s = fl.ReadLine().Split();
+                    int t = 0;
+                    for (int i = 0; i < AllList.Count; i++)
+                    {
+                        for (int j = 0; j < AllList.Count; j++)
+                        {
+                            if (s[t] != "")
+                            {
+                                ls[i, j] = Convert.ToBoolean(s[t]);
+                            }
+                            t++;
+                        }
+                    }
+                    fl.Close();
                 }
-                fl.Close();
+                catch
+                {
+                    f_m.Logs.Text = "Open error";
+                }
             }
             public void Save()
             {
-                FileStream f1 =  File.Create("sf.txt");
-                f1.Close();
-                StreamWriter fl = new StreamWriter("sf.txt");
-                for (int i = 0; i < AllList.Count; i++)
+                try
                 {
-                    fl.Write(AllList[i] + " ");
-                }
-                fl.WriteLine();
-                for (int i = 0; i < AllList.Count; i++)
-                {
-                    for (int j = 0; j < AllList.Count; j++)
+                    FileStream f1 = File.Create("sf.txt");
+                    f1.Close();
+                    StreamWriter fl = new StreamWriter("sf.txt");
+                    for (int i = 0; i < AllList.Count; i++)
                     {
-                        fl.Write(ls[i, j] + " ");
+                        fl.Write(AllList[i] + " ");
                     }
+                    fl.WriteLine();
+                    for (int i = 0; i < AllList.Count; i++)
+                    {
+                        for (int j = 0; j < AllList.Count; j++)
+                        {
+                            fl.Write(ls[i, j] + " ");
+                        }
+                    }
+                    fl.Close();
                 }
-                fl.Close();
+                catch
+                {
+                    f_m.Logs.Text = "Save error";
+                }
             }
             public void Remove()
             {
                 int temp_length = AllList.Count;
-                while(AllList.Count!=0)//for(int i = temp_length; i >= 0; i--)
+                while(AllList.Count!=0)
                 {
                     AllList.RemoveAt(0);
                 }
@@ -232,6 +246,7 @@ namespace saod7
                 }
             }
         }
+
         private void AddType1_Click(object sender, EventArgs e)
         {
             Logs.Text = "";
@@ -255,17 +270,20 @@ namespace saod7
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Logs.Text = "";
-            MyTable.DeleteNode(Convert.ToInt32(AddTextBox.Text));
-            AddTextBox.Text = "";
+            try
+            {
+                Logs.Text = "";
+                MyTable.DeleteNode(Convert.ToInt32(AddTextBox.Text));
+                AddTextBox.Text = "";
+            }
+            catch
+            {
+                Logs.Text = "Error";
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         { }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-        }
 
         private void NewBut_Click(object sender, EventArgs e)
         {

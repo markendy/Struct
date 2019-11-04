@@ -180,6 +180,8 @@
             this.Controls.Add(this.SaveBut);
             this.Controls.Add(this.OpenBut);
             this.Controls.Add(this.NewBut);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
