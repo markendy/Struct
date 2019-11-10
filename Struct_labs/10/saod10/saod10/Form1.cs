@@ -17,9 +17,9 @@ namespace saod10
         private int _width;
         private int _height;
         // Bitmap
-        private Bitmap _fractal;
+        private Bitmap _fr;
         //для отрисовки
-        private Graphics _graph;
+        private Graphics _g;
 
         public Form1()
         {
@@ -32,14 +32,14 @@ namespace saod10
         private void CarpetButton_Click(object sender, EventArgs e)
         {
             //создаем Bitmap для прямоугольника
-            _fractal = new Bitmap(_width, _height);
+            _fr = new Bitmap(_width, _height);
             // cоздаем новый объект Graphics из указанного Bitmap
-            _graph = Graphics.FromImage(_fractal);
+            _g = Graphics.FromImage(_fr);
             //создаем прямоугольник и вызываем функцию отрисовки ковра
-            RectangleF carpet = new RectangleF(0, 0, _width, _height);
-            DrawCarpet(Level, carpet);
+            RectangleF ct = new RectangleF(0, 0, _width, _height);
+            DrawCarpet(Level, ct);
             //отображаем результат
-            pictureBox1.BackgroundImage = _fractal;
+            pictureBox1.BackgroundImage = _fr;
         }       
 
         private void DrawCarpet(int level, RectangleF carpet)
@@ -48,7 +48,7 @@ namespace saod10
             if (level == 0)
             {
                 //Рисуем прямоугольник
-                _graph.FillRectangle(Brushes.Blue, carpet);
+                _g.FillRectangle(Brushes.Blue, carpet);
             }
             else
             {
@@ -77,65 +77,3 @@ namespace saod10
         }
     }
 }
-/*
-
-        //функция вычисления координат средней точки
-        private PointF MidPoint(PointF p1, PointF p2)
-        {
-            return new PointF((p1.X + p2.X) / 2f, (p1.Y + p2.Y) / 2f);
-        } 
- 
- private void TriangleButton_Click(object sender, EventArgs e)
-       {
-           //создаем Bitmap для треугольника
-           _fractal = new Bitmap(_width, _height);
-           // cоздаем новый объект Graphics из указанного Bitmap
-           _graph = Graphics.FromImage(_fractal);
-           //вершины треугольника
-           PointF topPoint = new PointF(_width / 2f, 0);
-           PointF leftPoint = new PointF(0, _height);
-           PointF rightPoint = new PointF(_width, _height);
-           //вызываем функцию отрисовки
-           DrawTriangle(Level, topPoint, leftPoint, rightPoint);
-           //отображаем получившийся фрактал
-           pictureBox1.BackgroundImage = _fractal;
-       }
-private void DrawTriangle(int level, PointF top, PointF left, PointF right)
-        {
-            //проверяем, закончили ли мы построение
-            if (level == 0)
-            {
-                PointF[] points = new PointF[3]
-                {
-                    top, right, left
-                };
-                //рисуем фиолетовый треугольник
-                _graph.FillPolygon(Brushes.BlueViolet, points);
-            }
-            else
-            {
-                //вычисляем среднюю точку
-                var leftMid = MidPoint(top, left); //левая сторона
-                var rightMid = MidPoint(top, right); //правая сторона
-                var topMid = MidPoint(left, right); // основание
-                //рекурсивно вызываем функцию для каждого и 3 треугольников
-                DrawTriangle(level - 1, top, leftMid, rightMid);
-                DrawTriangle(level - 1, leftMid, left, topMid);
-                DrawTriangle(level - 1, rightMid, topMid, right);
-            }
-        }
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     */

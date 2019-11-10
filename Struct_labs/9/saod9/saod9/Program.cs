@@ -285,15 +285,15 @@ namespace saod9
     {
         static void Main(string[] args)
         {
-            Tree<int> tree = new Tree<int>();
-            tree.Add(2);
-            tree.Add(4);
-            tree.Add(6);
-            tree.Add(3);
-            tree.Add(5);
-            tree.Add(1);
-            tree.Delete(6);
-            tree.SearchValue(tree.root, 3);
+            Tree<string> tree = new Tree<string>();
+            tree.Add("a");
+            tree.Add("b");
+            tree.Add("d");
+            tree.Add("f");
+            tree.Add("g");
+            tree.Add("h");
+            tree.Delete("b");
+            tree.SearchValue(tree.root, "f");
         }
     }
 }
