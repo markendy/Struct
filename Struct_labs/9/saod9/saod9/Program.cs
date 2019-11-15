@@ -286,6 +286,16 @@ namespace saod9
         static void Main(string[] args)
         {
             Tree<string> tree = new Tree<string>();
+<<<<<<< HEAD
+            tree.Add("n1");
+            tree.Add("n2");
+            tree.Add("n3");
+            tree.Add("n4");
+            tree.Add("n5");
+            tree.Add("n6");
+            tree.Delete("n4");
+            tree.SearchValue(tree.root, "n3");
+=======
             tree.Add("a");
             tree.Add("b");
             tree.Add("d");
@@ -294,6 +304,7 @@ namespace saod9
             tree.Add("h");
             tree.Delete("b");
             tree.SearchValue(tree.root, "f");
+>>>>>>> b5c183c8e83bf71a524b6f78a20b52c3a940a483
         }
     }
 }
