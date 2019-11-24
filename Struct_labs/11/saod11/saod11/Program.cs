@@ -18,31 +18,33 @@ namespace saod11
                 Console.WriteLine($"val {i+1}? = ");
                 time[i]= Convert.ToInt32(Console.ReadLine());
             }
+            Array.Sort(time);
             Console.WriteLine(So(time,N));
         }
 
         static int So(int[]time, int N)
         {
-            int res = 0;
-            Array.Sort(time);
+            int res = 0;         
             bool ex = false;
             int i = 0;
 
             while (!ex)
             {
+                if (i > time.Length-1)
+                {
+                    ex = true;
+                    break;
+                }
                 if (N-time[i] < 0)
                 {
                     ex = true;
-                }
-                if (i >= time.Length)
-                {
-                    ex = true;
+                    break;
                 }
                 N -= time[i];
                 i++;
                 res++;
             }
-            return res-1;
+            return res;
         }
     }
 }

@@ -11,8 +11,8 @@ namespace saod12
         static int[,] valMas;
         static void Main(string[] args)
         {
-            int M = 3;
-            int N = 3;
+            int M = 1;
+            int N = 10;
             valMas = new int[M, N];
             F(M,N);
             Console.ReadKey();
