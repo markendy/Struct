@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindText", "FindText\FindText.csproj", "{84B3A521-CC64-4FA6-AAE0-422D941A867C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{3829E11A-83C4-4F94-A262-D666D2A3A0FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{84B3A521-CC64-4FA6-AAE0-422D941A867C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84B3A521-CC64-4FA6-AAE0-422D941A867C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84B3A521-CC64-4FA6-AAE0-422D941A867C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3829E11A-83C4-4F94-A262-D666D2A3A0FB}.Debug|Any CPU.ActiveCfg = Debug
+		{3829E11A-83C4-4F94-A262-D666D2A3A0FB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
